@@ -1,0 +1,13 @@
+{
+  "name": "magento-text-exac",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "https://github.com/tvthu/text-render-for-magento.git",
+  "author": "Thu Trinh <trinh.0703@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx http-server --cors"
+  },
+  "dependencies": {
+  }
+}
