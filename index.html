@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Data Reader</title>
-    <link rel="stylesheet" href="src/css/input.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-</head>
-<body>
-    <div class="grid">
-        <div>
-            <div id="mysql-conntact"></div>
-            <div id="mysql-dump"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Text Data Reader</title>
+        <link rel="stylesheet" href="src/css/input.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="grid">
+            <div>
+                <div>
+                    <div style="margin-bottom: 20px;">
+                        <!-- Place this tag where you want the button to render. -->
+                        <a class="github-button" href="https://github.com/tvthu/text-render-for-magento" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star tvthu/text-render-for-magento on GitHub">Star</a>
+                                    
+                        <!-- Place this tag in your head or just before your close body tag. -->
+                        <script async defer src="https://buttons.github.io/buttons.js"></script>
+                    </div>
+                    <div id="mysql-conntact"></div>
+                </div>
+                <div id="mysql-dump"></div>
+            </div>
+
+            <div>
+                <textarea
+                    id="input-text"
+                    placeholder="Enter your text here..."
+                ></textarea>
+                <button id="readButton" class="btn btn-blue">
+                    Process Text
+                </button>
+            </div>
         </div>
 
-        <div>
-            <textarea id="input-text" placeholder="Enter your text here..."></textarea>
-            <button id="readButton" class="btn btn-blue">Process Text</button>
-        </div>
-    </div>
-
-    <script src="src/js/script.js"></script>
-</body>
+        
+        <script src="src/js/script.js"></script>
+    </body>
 </html>
