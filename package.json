@@ -1,13 +1,27 @@
 {
   "name": "magento-text-exac",
   "version": "1.0.0",
-  "main": "index.html",
   "repository": "https://github.com/tvthu/text-render-for-magento.git",
   "author": "Thu Trinh <trinh.0703@gmail.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
-    "start": "npx http-server --cors"
+    "start": "npx webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d dist"
   },
   "dependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "html-minimizer-webpack-plugin": "^4.4.0",
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "webpack-dev-server": "^4.15.1"
   }
 }

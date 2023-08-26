@@ -1,3 +1,5 @@
+import '../css/main.scss';
+
 class MagentoEnvContentProcesser {
     constructor() {
         this.inputText = "";
@@ -31,8 +33,10 @@ class MagentoEnvContentProcesser {
 
 $(document).ready(function () {
 
+    const storeKey = "phpCode";
+
     // read from local storage, and fill to element
-    const phpCode = localStorage.getItem("phpCode");
+    const phpCode = localStorage.getItem(storeKey);
 
     if (phpCode) {
         $("#input-text").val(phpCode);
@@ -46,22 +50,26 @@ $(document).ready(function () {
         if (e.which == 13) {
             $("#readButton").click();
         }
-    })
+    });
 
     $("#readButton").click(function () {
         const phpCode = $("#input-text").val();
 
         // store the value to local storage
-        localStorage.setItem("phpCode", phpCode);
+        localStorage.setItem(storeKey, phpCode);
 
         const magentoEnvContentProcesser = new MagentoEnvContentProcesser();
         magentoEnvContentProcesser.setInputText(phpCode);
         const outputText = magentoEnvContentProcesser.getOutputText();
         const { host, dbname, password, username } = outputText;
 
-        const sql = `mysql -u${username} -p"${password}" -h${host} ${dbname}`;
+        const sql = `mysql -u$<span style="color:#cf1666">{username}</span> -p"<span style="color:#cf1666">${password}</span>" -h<span style="color:#cf1666">${host}</span> <span style="color:#cf1666">${dbname}</span>`;
 
-        const sqldump = `mysqldump -u${username} -h${host} -p"${password}" ${dbname} --routines --force --triggers --single-transaction --opt --skip-lock-tables --no-tablespaces | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\\*/\\*/' > ${dbname}.sql`;
+        const sqldump = `mysqldump -u<span style="color:#cf1666">${username}</span> -h<span style="color:#cf1666">${host}</span> -p"<span style="color:#cf1666">${password}</span>" <span style="color:#cf1666">${dbname}</span> --routines --force --triggers --single-transaction --opt --skip-lock-tables --no-tablespaces | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\\*/\\*/' > ${dbname}.sql`;
+
+        if (!host) {
+            return;
+        }
 
         $("#mysql-conntact").html(sql);
 
